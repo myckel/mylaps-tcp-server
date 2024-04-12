@@ -3,7 +3,7 @@
 
 # mylaps-tcp-server
 
-Java TCP server for handling Timing and Scoring data feed.  Just override ServerDataHandler and create a new MyLapsTCPServer with that handler.
+Java TCP server for handling Timing and Scoring data feed. Just override ServerDataHandler and create a new MyLapsTCPServer with that handler.
 
 ```
 public class SampleServerHandler extends ServerDataHandler {
@@ -36,14 +36,32 @@ public class SampleServerHandler extends ServerDataHandler {
 ```
 
 Easiest to integrate with your project using jitpack https://jitpack.io
-```    
-implementation 'com.github.cmagnuson:mylaps-tcp-server:TAG' 
+
+```
+implementation 'com.github.cmagnuson:mylaps-tcp-server:TAG'
 ```
 
-For Android exclude slf4j and include Android version:   
-``` 
+For Android exclude slf4j and include Android version:
+
+```
 implementation('com.github.cmagnuson:mylaps-tcp-server:TAG'){
     exclude group: 'org.slf4j'
 }
 implementation 'org.slf4j:slf4j-android:1.7.25'
 ```
+
+# Running with Docker
+
+To build the Docker image:
+
+```
+docker build -t mylaps-tcp-server .
+```
+
+To run the server using Docker:
+
+```
+docker run -d --name mylaps-tcp-server-instance -p 3097:3097 mylaps-tcp-server
+```
+
+This command starts the server and exposes it on port 3097. You can change the port by modifying the -p argument.
