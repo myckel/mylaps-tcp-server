@@ -7,5 +7,5 @@ RUN ls -la /build/build/libs/
 
 FROM openjdk:8-jdk
 WORKDIR /app
-COPY --from=builder /build/build/libs/mylapstcpserver-0.3.1-a3287be.jar /app/
-CMD ["java", "-jar", "mylapstcpserver-0.3.1-a3287be.jar"]
+COPY --from=builder /build/build/libs/*.jar /app/app.jar
+CMD ["java", "-jar", "app.jar"]
